@@ -20,6 +20,11 @@
         "path": "./examples/resources/awscc_acmpca_permission/import.sh"
     },
     {
+        "resource": "awscc_aiops_investigation_group",
+        "identifier": ["Arn"],
+        "path": "./examples/resources/awscc_aiops_investigation_group/import.sh"
+    },
+    {
         "resource": "awscc_aps_rule_groups_namespace",
         "identifier": ["Arn"],
         "path": "./examples/resources/awscc_aps_rule_groups_namespace/import.sh"
@@ -1935,6 +1940,11 @@
         "path": "./examples/resources/awscc_ec2_subnet_route_table_association/import.sh"
     },
     {
+        "resource": "awscc_ec2_traffic_mirror_filter",
+        "identifier": ["Id"],
+        "path": "./examples/resources/awscc_ec2_traffic_mirror_filter/import.sh"
+    },
+    {
         "resource": "awscc_ec2_transit_gateway",
         "identifier": ["Id"],
         "path": "./examples/resources/awscc_ec2_transit_gateway/import.sh"
@@ -2458,6 +2468,11 @@
         "resource": "awscc_fsx_data_repository_association",
         "identifier": ["AssociationId"],
         "path": "./examples/resources/awscc_fsx_data_repository_association/import.sh"
+    },
+    {
+        "resource": "awscc_fsx_s3_access_point_attachment",
+        "identifier": ["Name"],
+        "path": "./examples/resources/awscc_fsx_s3_access_point_attachment/import.sh"
     },
     {
         "resource": "awscc_finspace_environment",
@@ -3620,6 +3635,11 @@
         "path": "./examples/resources/awscc_m2_environment/import.sh"
     },
     {
+        "resource": "awscc_mpa_identity_source",
+        "identifier": ["IdentitySourceArn"],
+        "path": "./examples/resources/awscc_mpa_identity_source/import.sh"
+    },
+    {
         "resource": "awscc_msk_batch_scram_secret",
         "identifier": ["ClusterArn"],
         "path": "./examples/resources/awscc_msk_batch_scram_secret/import.sh"
@@ -4166,7 +4186,7 @@
     },
     {
         "resource": "awscc_opsworkscm_server",
-        "identifier": ["ServerName"],
+        "identifier": ["Id"],
         "path": "./examples/resources/awscc_opsworkscm_server/import.sh"
     },
     {
@@ -4895,6 +4915,11 @@
         "path": "./examples/resources/awscc_s3outposts_endpoint/import.sh"
     },
     {
+        "resource": "awscc_s3tables_namespace",
+        "identifier": ["TableBucketARN","Namespace"],
+        "path": "./examples/resources/awscc_s3tables_namespace/import.sh"
+    },
+    {
         "resource": "awscc_s3tables_table_bucket",
         "identifier": ["TableBucketARN"],
         "path": "./examples/resources/awscc_s3tables_table_bucket/import.sh"
@@ -5265,6 +5290,16 @@
         "path": "./examples/resources/awscc_secretsmanager_secret_target_attachment/import.sh"
     },
     {
+        "resource": "awscc_securityhub_aggregator_v2",
+        "identifier": ["AggregatorV2Arn"],
+        "path": "./examples/resources/awscc_securityhub_aggregator_v2/import.sh"
+    },
+    {
+        "resource": "awscc_securityhub_automation_rule_v2",
+        "identifier": ["RuleArn"],
+        "path": "./examples/resources/awscc_securityhub_automation_rule_v2/import.sh"
+    },
+    {
         "resource": "awscc_securityhub_configuration_policy",
         "identifier": ["Arn"],
         "path": "./examples/resources/awscc_securityhub_configuration_policy/import.sh"
@@ -5283,6 +5318,11 @@
         "resource": "awscc_securityhub_hub",
         "identifier": ["ARN"],
         "path": "./examples/resources/awscc_securityhub_hub/import.sh"
+    },
+    {
+        "resource": "awscc_securityhub_hub_v2",
+        "identifier": ["HubV2Arn"],
+        "path": "./examples/resources/awscc_securityhub_hub_v2/import.sh"
     },
     {
         "resource": "awscc_securityhub_insight",
@@ -5678,6 +5718,21 @@
         "resource": "awscc_workspaces_workspaces_pool",
         "identifier": ["PoolId"],
         "path": "./examples/resources/awscc_workspaces_workspaces_pool/import.sh"
+    },
+    {
+        "resource": "awscc_workspacesinstances_volume",
+        "identifier": ["VolumeId"],
+        "path": "./examples/resources/awscc_workspacesinstances_volume/import.sh"
+    },
+    {
+        "resource": "awscc_workspacesinstances_volume_association",
+        "identifier": ["WorkspaceInstanceId","VolumeId","Device"],
+        "path": "./examples/resources/awscc_workspacesinstances_volume_association/import.sh"
+    },
+    {
+        "resource": "awscc_workspacesinstances_workspace_instance",
+        "identifier": ["WorkspaceInstanceId"],
+        "path": "./examples/resources/awscc_workspacesinstances_workspace_instance/import.sh"
     },
     {
         "resource": "awscc_workspacesthinclient_environment",

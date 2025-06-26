@@ -137,15 +137,15 @@ func segmentDefinitionDataSource(ctx context.Context) (datasource.DataSource, er
 		//	                              "description": "Defines the range to be applied to the calculated attribute definition.",
 		//	                              "properties": {
 		//	                                "End": {
-		//	                                  "description": "The ending point for this overridden range.",
-		//	                                  "maximum": 366,
-		//	                                  "minimum": 0,
+		//	                                  "description": "The ending point for this overridden range. Positive numbers indicate how many days in the past data should be included, and negative numbers indicate how many days in the future.",
+		//	                                  "maximum": 2147483647,
+		//	                                  "minimum": -2147483648,
 		//	                                  "type": "integer"
 		//	                                },
 		//	                                "Start": {
-		//	                                  "description": "The starting point for this overridden range.",
-		//	                                  "maximum": 366,
-		//	                                  "minimum": 1,
+		//	                                  "description": "The starting point for this overridden range. Positive numbers indicate how many days in the past data should be included, and negative numbers indicate how many days in the future.",
+		//	                                  "maximum": 2147483647,
+		//	                                  "minimum": -2147483648,
 		//	                                  "type": "integer"
 		//	                                },
 		//	                                "Unit": {
@@ -1402,6 +1402,39 @@ func segmentDefinitionDataSource(ctx context.Context) (datasource.DataSource, er
 		//	                      ],
 		//	                      "type": "object"
 		//	                    },
+		//	                    "ProfileType": {
+		//	                      "additionalProperties": false,
+		//	                      "description": "Specifies profile type based criteria for a segment.",
+		//	                      "properties": {
+		//	                        "DimensionType": {
+		//	                          "description": "The type of segment dimension to use for a profile type dimension.",
+		//	                          "enum": [
+		//	                            "INCLUSIVE",
+		//	                            "EXCLUSIVE"
+		//	                          ],
+		//	                          "type": "string"
+		//	                        },
+		//	                        "Values": {
+		//	                          "insertionOrder": false,
+		//	                          "items": {
+		//	                            "description": "The type of profile.",
+		//	                            "enum": [
+		//	                              "ACCOUNT_PROFILE",
+		//	                              "PROFILE"
+		//	                            ],
+		//	                            "type": "string"
+		//	                          },
+		//	                          "maxItems": 1,
+		//	                          "minItems": 1,
+		//	                          "type": "array"
+		//	                        }
+		//	                      },
+		//	                      "required": [
+		//	                        "DimensionType",
+		//	                        "Values"
+		//	                      ],
+		//	                      "type": "object"
+		//	                    },
 		//	                    "ShippingAddress": {
 		//	                      "additionalProperties": false,
 		//	                      "description": "The address based criteria for the segment.",
@@ -1689,12 +1722,12 @@ func segmentDefinitionDataSource(ctx context.Context) (datasource.DataSource, er
 																Attributes: map[string]schema.Attribute{ /*START SCHEMA*/
 																	// Property: End
 																	"end": schema.Int64Attribute{ /*START ATTRIBUTE*/
-																		Description: "The ending point for this overridden range.",
+																		Description: "The ending point for this overridden range. Positive numbers indicate how many days in the past data should be included, and negative numbers indicate how many days in the future.",
 																		Computed:    true,
 																	}, /*END ATTRIBUTE*/
 																	// Property: Start
 																	"start": schema.Int64Attribute{ /*START ATTRIBUTE*/
-																		Description: "The starting point for this overridden range.",
+																		Description: "The starting point for this overridden range. Positive numbers indicate how many days in the past data should be included, and negative numbers indicate how many days in the future.",
 																		Computed:    true,
 																	}, /*END ATTRIBUTE*/
 																	// Property: Unit
@@ -2347,6 +2380,23 @@ func segmentDefinitionDataSource(ctx context.Context) (datasource.DataSource, er
 													Description: "Specifies profile based criteria for a segment.",
 													Computed:    true,
 												}, /*END ATTRIBUTE*/
+												// Property: ProfileType
+												"profile_type": schema.SingleNestedAttribute{ /*START ATTRIBUTE*/
+													Attributes: map[string]schema.Attribute{ /*START SCHEMA*/
+														// Property: DimensionType
+														"dimension_type": schema.StringAttribute{ /*START ATTRIBUTE*/
+															Description: "The type of segment dimension to use for a profile type dimension.",
+															Computed:    true,
+														}, /*END ATTRIBUTE*/
+														// Property: Values
+														"values": schema.ListAttribute{ /*START ATTRIBUTE*/
+															ElementType: types.StringType,
+															Computed:    true,
+														}, /*END ATTRIBUTE*/
+													}, /*END SCHEMA*/
+													Description: "Specifies profile type based criteria for a segment.",
+													Computed:    true,
+												}, /*END ATTRIBUTE*/
 												// Property: ShippingAddress
 												"shipping_address": schema.SingleNestedAttribute{ /*START ATTRIBUTE*/
 													Attributes: map[string]schema.Attribute{ /*START SCHEMA*/
@@ -2606,6 +2656,7 @@ func segmentDefinitionDataSource(ctx context.Context) (datasource.DataSource, er
 		"phone_number":            "PhoneNumber",
 		"postal_code":             "PostalCode",
 		"profile_attributes":      "ProfileAttributes",
+		"profile_type":            "ProfileType",
 		"province":                "Province",
 		"range":                   "Range",
 		"segment_definition_arn":  "SegmentDefinitionArn",
